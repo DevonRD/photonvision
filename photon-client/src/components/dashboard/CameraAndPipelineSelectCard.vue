@@ -10,6 +10,7 @@ import { PipelineType } from "@/types/PipelineTypes";
 import { useSettingsStore } from "@/stores/settings/GeneralSettingsStore";
 import { useTheme } from "vuetify";
 import PvDeleteModal from "@/components/common/pv-delete-modal.vue";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -407,14 +408,14 @@ const wrappedCameras = computed<SelectItem[]>(() =>
         <v-card-actions class="pr-5 pt-10px pb-5">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="cancelPipelineCreation"
           >
             Cancel
           </v-btn>
           <v-btn
             color="buttonActive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             :disabled="checkPipelineName(newPipelineName) !== true"
             @click="createNewPipeline"
           >
@@ -441,7 +442,7 @@ const wrappedCameras = computed<SelectItem[]>(() =>
         <v-card-actions class="pa-5 pt-0">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             class="text-black"
             @click="cancelChangePipelineType"
           >
@@ -449,7 +450,7 @@ const wrappedCameras = computed<SelectItem[]>(() =>
           </v-btn>
           <v-btn
             color="buttonActive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="confirmChangePipelineType"
           >
             Confirm

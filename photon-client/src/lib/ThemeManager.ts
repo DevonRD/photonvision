@@ -32,6 +32,16 @@ export const toggleTheme = (theme: ThemeInstance) => {
   restoreThemeConfig(theme);
 };
 
+export const getAlertVariant = (theme: ThemeInstance) => {
+  const themeType = theme.global.name.value === "LightTheme" ? "light" : "dark";
+  return themeType === "light" ? "elevated" : "tonal";
+}
+
+export const getButtonVariant = (theme: ThemeInstance) => {
+  const themeType = theme.global.name.value === "LightTheme" ? "light" : "dark";
+  return themeType === "light" ? "elevated" : "outlined";
+}
+
 export const restoreThemeConfig = (theme: ThemeInstance) => {
   // Restore theme preference
   const storedTheme = localStorage.getItem("theme");

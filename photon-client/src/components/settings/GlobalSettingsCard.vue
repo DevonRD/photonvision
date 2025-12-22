@@ -8,7 +8,7 @@ import PvSelect from "@/components/common/pv-select.vue";
 import { type ConfigurableNetworkSettings, NetworkConnectionType } from "@/types/SettingTypes";
 import { useStateStore } from "@/stores/StateStore";
 import { useTheme } from "vuetify";
-import { getThemeColor, setThemeColor, resetTheme } from "@/lib/ThemeManager";
+import { getThemeColor, setThemeColor, resetTheme, getAlertVariant, getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -190,7 +190,7 @@ watchEffect(() => {
           density="compact"
           text="The NetworkTables Server Address is not set or is invalid. NetworkTables is unable to connect."
           icon="mdi-alert-circle-outline"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+          :variant="getAlertVariant(theme)"
         />
         <pv-radio
           v-show="!useSettingsStore().network.networkingDisabled"
@@ -264,7 +264,7 @@ watchEffect(() => {
           density="compact"
           text="Cannot detect any wired connections! Send program logs to the developers for help."
           icon="mdi-alert-circle-outline"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+          :variant="getAlertVariant(theme)"
         />
         <pv-switch
           v-model="tempSettingsStruct.runNTServer"
@@ -278,7 +278,7 @@ watchEffect(() => {
           density="compact"
           text="This mode is intended for debugging and should be off for proper usage. PhotonLib will NOT work!"
           icon="mdi-information-outline"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+          :variant="getAlertVariant(theme)"
         />
         <v-card-title class="pl-0 pt-3 pb-10px">Miscellaneous</v-card-title>
         <pv-switch
@@ -293,13 +293,13 @@ watchEffect(() => {
           density="compact"
           text="This mode is intended for debugging and may reduce performance; it should be off for field use."
           icon="mdi-information-outline"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+          :variant="getAlertVariant(theme)"
         />
       </v-form>
       <v-btn
         color="primary"
         class="mt-3"
-        :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+        :variant="getButtonVariant(theme)"
         style="color: black; width: 100%"
         :disabled="!settingsValid || !settingsHaveChanged()"
         @click="saveGeneralSettings"
@@ -362,7 +362,7 @@ watchEffect(() => {
         </v-card-text>
         <v-card-actions class="pa-5 pt-0">
           <v-btn
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             color="buttonPassive"
             class="text-black"
             @click="showThemeConfig = false"
@@ -370,7 +370,7 @@ watchEffect(() => {
             Close
           </v-btn>
           <v-btn
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             color="buttonActive"
             class="text-black"
             @click="

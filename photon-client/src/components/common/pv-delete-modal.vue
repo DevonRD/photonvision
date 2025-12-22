@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useTheme } from "vuetify";
 import pvInput from "./pv-input.vue";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -49,7 +50,7 @@ const confirmationText = ref("");
               color="buttonActive"
               style="float: right"
               width="100%"
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               @click="onBackup"
             >
               <v-icon start class="open-icon" size="large"> mdi-export </v-icon>
@@ -65,7 +66,7 @@ const confirmationText = ref("");
                   ? confirmationText.toLowerCase() !== expectedConfirmationText.toLowerCase()
                   : false
               "
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               @click="
                 onConfirm();
                 confirmationText = '';

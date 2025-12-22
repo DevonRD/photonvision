@@ -6,6 +6,7 @@ import { type ObjectDetectionModelProperties } from "@/types/SettingTypes";
 import PvDeleteModal from "@/components/common/pv-delete-modal.vue";
 import { useTheme } from "vuetify";
 import { axiosPost } from "@/lib/PhotonUtils";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 const showImportDialog = ref(false);
@@ -162,7 +163,7 @@ const handleBulkImport = () => {
           <v-btn
             color="buttonActive"
             class="justify-center"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="() => (showImportDialog = true)"
           >
             <v-icon start class="open-icon"> mdi-import </v-icon>
@@ -241,7 +242,7 @@ const handleBulkImport = () => {
                       importHeight === null ||
                       importVersion === null
                     "
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     @click="handleImport()"
                   >
                     <v-icon start class="open-icon" size="large"> mdi-import </v-icon>
@@ -256,7 +257,7 @@ const handleBulkImport = () => {
           <v-btn
             color="buttonActive"
             class="justify-center"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="() => (showBulkImportDialog = true)"
           >
             <v-icon start class="open-icon"> mdi-import </v-icon>
@@ -274,7 +275,7 @@ const handleBulkImport = () => {
                     color="buttonActive"
                     width="100%"
                     :disabled="importFile === null"
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     @click="handleBulkImport()"
                   >
                     <v-icon start class="open-icon" size="large"> mdi-import </v-icon>
@@ -288,7 +289,7 @@ const handleBulkImport = () => {
         <v-col cols="12" sm="6">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="openExportPrompt"
           >
             <v-icon start class="open-icon"> mdi-export </v-icon>
@@ -305,7 +306,7 @@ const handleBulkImport = () => {
         <v-col cols="12" sm="6">
           <v-btn
             color="error"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="() => (showNukeDialog = true)"
           >
             <v-icon left class="open-icon"> mdi-trash </v-icon>
@@ -335,7 +336,7 @@ const handleBulkImport = () => {
                     small
                     color="error"
                     title="Delete Model"
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     @click="() => (confirmDeleteDialog = { show: true, model })"
                   >
                     <v-icon size="large">mdi-trash-can-outline</v-icon>
@@ -347,7 +348,7 @@ const handleBulkImport = () => {
                     small
                     color="buttonActive"
                     title="Rename Model"
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     @click="() => (showRenameDialog = { show: true, model, newName: '' })"
                   >
                     <v-icon size="large">mdi-pencil</v-icon>
@@ -358,7 +359,7 @@ const handleBulkImport = () => {
                     icon
                     small
                     color="buttonPassive"
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     @click="() => (showInfo = { show: true, model })"
                   >
                     <v-icon size="large">mdi-information</v-icon>
@@ -387,13 +388,13 @@ const handleBulkImport = () => {
                 </div>
                 <v-card-actions class="pt-5 pb-0 pr-0" style="justify-content: flex-end">
                   <v-btn
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     color="error"
                     @click="showRenameDialog.show = false"
                     >Cancel</v-btn
                   >
                   <v-btn
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     color="buttonActive"
                     @click="renameModel(showRenameDialog.model, showRenameDialog.newName)"
                     >Rename</v-btn
@@ -409,7 +410,7 @@ const handleBulkImport = () => {
                 <v-btn
                   color="buttonPassive"
                   width="100%"
-                  :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                  :variant="getButtonVariant(theme)"
                   @click="openExportIndividualModelPrompt"
                 >
                   <v-icon left class="open-icon" size="large"> mdi-export </v-icon>

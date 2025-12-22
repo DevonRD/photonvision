@@ -16,6 +16,7 @@ import Map3DTab from "@/components/dashboard/tabs/Map3DTab.vue";
 import { WebsocketPipelineType } from "@/types/WebsocketDataTypes";
 import { useDisplay } from "vuetify/lib/composables/display";
 import { useTheme } from "vuetify";
+import { getAlertVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -122,7 +123,7 @@ const onBeforeTabUpdate = () => {
         density="compact"
         text="Camera is not connected. Please check your connection and try again."
         icon="mdi-alert-circle-outline"
-        :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+        :variant="getAlertVariant(theme)"
       />
     </template>
     <template v-else>

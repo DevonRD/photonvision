@@ -5,6 +5,7 @@ import PvSelect from "@/components/common/pv-select.vue";
 import PvDeleteModal from "@/components/common/pv-delete-modal.vue";
 import { useTheme } from "vuetify";
 import { axiosPost } from "@/lib/PhotonUtils";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -126,7 +127,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12" lg="4" md="6">
           <v-btn
             color="buttonActive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="restartProgram"
           >
             <v-icon start class="open-icon" size="large"> mdi-restart </v-icon>
@@ -136,7 +137,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12" lg="4" md="6">
           <v-btn
             color="buttonActive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="restartDevice"
           >
             <v-icon start class="open-icon" size="large"> mdi-restart-alert </v-icon>
@@ -146,7 +147,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12" lg="4">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="openOfflineUpdatePrompt"
           >
             <v-icon start class="open-icon" size="large"> mdi-upload </v-icon>
@@ -159,7 +160,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12" sm="6">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="() => (showImportDialog = true)"
           >
             <v-icon start class="open-icon" size="large"> mdi-import </v-icon>
@@ -205,7 +206,7 @@ const nukePhotonConfigDirectory = () => {
                   <v-btn
                     color="primary"
                     :disabled="importFile === null"
-                    :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+                    :variant="getButtonVariant(theme)"
                     @click="handleSettingsImport"
                   >
                     <v-icon start class="open-icon"> mdi-import </v-icon>
@@ -219,7 +220,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12" sm="6">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="openExportSettingsPrompt"
           >
             <v-icon start class="open-icon" size="large"> mdi-export </v-icon>
@@ -236,7 +237,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12" sm="6">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="openExportLogsPrompt"
           >
             <v-icon start class="open-icon" size="large"> mdi-download </v-icon>
@@ -255,7 +256,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12" sm="6">
           <v-btn
             color="buttonPassive"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="useStateStore().showLogModal = true"
           >
             <v-icon start class="open-icon" size="large"> mdi-eye </v-icon>
@@ -267,7 +268,7 @@ const nukePhotonConfigDirectory = () => {
         <v-col cols="12">
           <v-btn
             color="error"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="() => (showFactoryReset = true)"
           >
             <v-icon start class="open-icon" size="large"> mdi-trash-can-outline </v-icon>

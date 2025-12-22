@@ -4,6 +4,7 @@ import { useCameraSettingsStore } from "@/stores/settings/CameraSettingsStore";
 import { useStateStore } from "@/stores/StateStore";
 import { useTheme } from "vuetify";
 import { PipelineType } from "@/types/PipelineTypes";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -35,7 +36,7 @@ const processingMode = computed<number>({
           <v-btn
             color="buttonPassive"
             :disabled="!useCameraSettingsStore().hasConnected"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             class="w-50"
           >
             <template #prepend>
@@ -51,7 +52,7 @@ const processingMode = computed<number>({
               useCameraSettingsStore().currentPipelineSettings.pipelineType == PipelineType.ObjectDetection ||
               useCameraSettingsStore().currentPipelineSettings.pipelineType == PipelineType.ColoredShape
             "
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             class="w-50"
           >
             <template #prepend>
@@ -69,7 +70,7 @@ const processingMode = computed<number>({
           <v-btn
             color="buttonPassive"
             class="fill w-50"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
           >
             <v-icon start class="mode-btn-icon" size="large">mdi-import</v-icon>
             <span class="mode-btn-label">Raw</span>
@@ -77,7 +78,7 @@ const processingMode = computed<number>({
           <v-btn
             color="buttonPassive"
             class="fill w-50"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
           >
             <v-icon start class="mode-btn-icon" size="large">mdi-export</v-icon>
             <span class="mode-btn-label">Processed</span>

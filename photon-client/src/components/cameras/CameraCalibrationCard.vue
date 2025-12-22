@@ -14,6 +14,7 @@ import { getResolutionString, resolutionsAreEqual } from "@/lib/PhotonUtils";
 import CameraCalibrationInfoCard from "@/components/cameras/CameraCalibrationInfoCard.vue";
 import { useSettingsStore } from "@/stores/settings/GeneralSettingsStore";
 import { useTheme } from "vuetify";
+import { getAlertVariant, getButtonVariant } from "@/lib/ThemeManager";
 
 const PromptRegular = import("@/assets/fonts/PromptRegular");
 const jspdf = import("jspdf");
@@ -282,7 +283,7 @@ const setSelectedVideoFormat = (format: VideoFormat) => {
             <v-alert
               closable
               density="compact"
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+              :variant="getAlertVariant(theme)"
               :color="useSettingsStore().general.mrCalWorking ? 'buttonPassive' : 'error'"
               :icon="useSettingsStore().general.mrCalWorking ? 'mdi-check' : 'mdi-close'"
               :text="
@@ -465,7 +466,7 @@ const setSelectedVideoFormat = (format: VideoFormat) => {
         </div>
         <div v-if="isCalibrating" class="d-flex justify-center align-center pt-10px pb-5">
           <v-chip
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+            :variant="getAlertVariant(theme)"
             label
             :color="useStateStore().calibrationData.hasEnoughImages ? 'buttonPassive' : 'light-grey'"
           >
@@ -478,7 +479,7 @@ const setSelectedVideoFormat = (format: VideoFormat) => {
             color="buttonPassive"
             size="small"
             block
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             :disabled="!settingsValid"
             @click="downloadCalibBoard"
           >
@@ -493,7 +494,7 @@ const setSelectedVideoFormat = (format: VideoFormat) => {
           density="compact"
           text="Too many corners. Finish calibration now!"
           icon="mdi-alert-circle-outline"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+          :variant="getAlertVariant(theme)"
         />
         <div class="d-flex pt-5">
           <v-col cols="6" class="pa-0 pr-2">
@@ -501,7 +502,7 @@ const setSelectedVideoFormat = (format: VideoFormat) => {
               size="small"
               block
               color="buttonActive"
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               :disabled="!settingsValid || tooManyPoints"
               @click="isCalibrating ? useCameraSettingsStore().takeCalibrationSnapshot() : startCalibration()"
             >
@@ -515,7 +516,7 @@ const setSelectedVideoFormat = (format: VideoFormat) => {
             <v-btn
               size="small"
               block
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               :color="useStateStore().calibrationData.hasEnoughImages ? 'buttonActive' : 'error'"
               :disabled="!isCalibrating || !settingsValid"
               @click="endCalibration"

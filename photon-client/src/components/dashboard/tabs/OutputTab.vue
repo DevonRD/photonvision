@@ -8,6 +8,7 @@ import { RobotOffsetType } from "@/types/SettingTypes";
 import { useStateStore } from "@/stores/StateStore";
 import { useDisplay } from "vuetify";
 import { useTheme } from "vuetify";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -164,7 +165,7 @@ const interactiveCols = computed(() =>
             block
             color="primary"
             class="text-black"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="useCameraSettingsStore().takeRobotOffsetPoint(RobotOffsetType.Single)"
           >
             Take Point
@@ -175,7 +176,7 @@ const interactiveCols = computed(() =>
             size="small"
             block
             color="error"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="useCameraSettingsStore().takeRobotOffsetPoint(RobotOffsetType.Clear)"
           >
             Clear All Points
@@ -192,7 +193,7 @@ const interactiveCols = computed(() =>
             block
             color="primary"
             class="text-black"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="useCameraSettingsStore().takeRobotOffsetPoint(RobotOffsetType.DualFirst)"
           >
             Take First Point
@@ -204,7 +205,7 @@ const interactiveCols = computed(() =>
             block
             color="primary"
             class="text-black"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="useCameraSettingsStore().takeRobotOffsetPoint(RobotOffsetType.DualSecond)"
           >
             Take Second Point
@@ -215,7 +216,7 @@ const interactiveCols = computed(() =>
             size="small"
             block
             color="error"
-            :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+            :variant="getButtonVariant(theme)"
             @click="useCameraSettingsStore().takeRobotOffsetPoint(RobotOffsetType.Clear)"
           >
             Clear All Points

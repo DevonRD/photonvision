@@ -11,6 +11,7 @@ import { useTheme } from "vuetify";
 
 const theme = useTheme();
 import { PlaceholderCameraSettings } from "@/types/SettingTypes";
+import { getAlertVariant } from "@/lib/ThemeManager";
 
 const cameraViewType = computed<number[]>({
   get: (): number[] => {
@@ -88,7 +89,7 @@ const showCameraSetupDialog = ref(useCameraSettingsStore().needsCameraConfigurat
       color="error"
       density="compact"
       icon="mdi-alert-circle-outline"
-      :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+      :variant="getAlertVariant(theme)"
     >
       <span>
         Arducam camera detected! Please configure the camera model in the <a href="#/cameras">Camera tab</a>!
@@ -100,7 +101,7 @@ const showCameraSetupDialog = ref(useCameraSettingsStore().needsCameraConfigurat
       color="error"
       density="compact"
       icon="mdi-alert-circle-outline"
-      :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+      :variant="getAlertVariant(theme)"
     >
       <span>
         Conflicting hostname detected! Please change the hostname in the <a href="#/settings">Settings tab</a>!
@@ -112,7 +113,7 @@ const showCameraSetupDialog = ref(useCameraSettingsStore().needsCameraConfigurat
       color="error"
       density="compact"
       icon="mdi-alert-circle-outline"
-      :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+      :variant="getAlertVariant(theme)"
     >
       <span
         >Conflicting camera name(s) detected! Please change the name(s) of

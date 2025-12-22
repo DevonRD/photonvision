@@ -9,6 +9,7 @@ import { computed, ref, watchEffect } from "vue";
 import { type CameraSettingsChangeRequest, ValidQuirks } from "@/types/SettingTypes";
 import { useTheme } from "vuetify";
 import { axiosPost } from "@/lib/PhotonUtils";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -179,7 +180,7 @@ const wrappedCameras = computed<SelectItem[]>(() =>
           size="small"
           color="buttonActive"
           :disabled="!settingsHaveChanged()"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           @click="saveCameraSettings"
         >
           <v-icon start size="large"> mdi-content-save </v-icon>
@@ -191,7 +192,7 @@ const wrappedCameras = computed<SelectItem[]>(() =>
           block
           size="small"
           color="error"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           @click="() => (showDeleteCamera = true)"
         >
           <v-icon start size="large"> mdi-trash-can-outline </v-icon>

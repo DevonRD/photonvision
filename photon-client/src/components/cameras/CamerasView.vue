@@ -6,6 +6,7 @@ import { PipelineType } from "@/types/PipelineTypes";
 import { useStateStore } from "@/stores/StateStore";
 import { useSettingsStore } from "@/stores/settings/GeneralSettingsStore";
 import { useTheme } from "vuetify";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -103,7 +104,7 @@ const fpsTooLow = computed<boolean>(() => {
         <v-btn
           color="buttonPassive"
           class="fill"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           :disabled="
             useCameraSettingsStore().isDriverMode ||
             useCameraSettingsStore().isCalibrationMode ||
@@ -116,7 +117,7 @@ const fpsTooLow = computed<boolean>(() => {
         <v-btn
           color="buttonPassive"
           class="fill"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           :disabled="
             useCameraSettingsStore().isDriverMode ||
             useCameraSettingsStore().isCalibrationMode ||

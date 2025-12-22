@@ -5,6 +5,7 @@ import { useStateStore } from "@/stores/StateStore";
 import { angleModulus, toDeg } from "@/lib/MathUtils";
 import { computed } from "vue";
 import { useTheme } from "vuetify";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -207,7 +208,7 @@ const resetCurrentBuffer = () => {
           color="buttonActive"
           class="mb-4 mt-1"
           style="width: min-content"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           @click="resetCurrentBuffer"
           >Reset Samples</v-btn
         >

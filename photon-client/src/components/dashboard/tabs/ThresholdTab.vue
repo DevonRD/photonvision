@@ -7,6 +7,7 @@ import { useStateStore } from "@/stores/StateStore";
 import { ColorPicker, type HSV } from "@/lib/ColorPicker";
 import { useDisplay } from "vuetify";
 import { useTheme } from "vuetify";
+import { getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -191,7 +192,7 @@ const interactiveCols = computed(() =>
               block
               color="primary"
               class="text-black"
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               @click="enableColorPicking(useCameraSettingsStore().currentPipelineSettings.hueInverted ? 2 : 3)"
             >
               <v-icon start size="large"> mdi-minus </v-icon>
@@ -204,7 +205,7 @@ const interactiveCols = computed(() =>
               class="text-black"
               size="small"
               block
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               @click="enableColorPicking(1)"
             >
               <v-icon start size="large"> mdi-plus-minus </v-icon>
@@ -217,7 +218,7 @@ const interactiveCols = computed(() =>
               block
               color="primary"
               class="text-black"
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               @click="enableColorPicking(useCameraSettingsStore().currentPipelineSettings.hueInverted ? 3 : 2)"
             >
               <v-icon start size="large"> mdi-plus </v-icon>
@@ -232,7 +233,7 @@ const interactiveCols = computed(() =>
               color="primary"
               class="text-black"
               size="small"
-              :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+              :variant="getButtonVariant(theme)"
               @click="disableColorPicking"
             >
               Cancel

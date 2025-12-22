@@ -6,6 +6,7 @@ import { computed, inject, ref } from "vue";
 import { axiosPost, getResolutionString, parseJsonFile } from "@/lib/PhotonUtils";
 import { useTheme } from "vuetify";
 import PvDeleteModal from "@/components/common/pv-delete-modal.vue";
+import { getAlertVariant, getButtonVariant } from "@/lib/ThemeManager";
 
 const theme = useTheme();
 
@@ -113,7 +114,7 @@ const calibrationImageURL = (index: number) =>
           color="buttonPassive"
           class="mr-2"
           style="flex: 1"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           @click="openUploadPhotonCalibJsonPrompt"
         >
           <v-icon start size="large">mdi-import</v-icon>
@@ -131,7 +132,7 @@ const calibrationImageURL = (index: number) =>
           class="mr-2"
           :disabled="!currentCalibrationCoeffs"
           style="flex: 1"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           @click="openExportCalibrationPrompt"
         >
           <v-icon start size="large">mdi-export</v-icon>
@@ -147,7 +148,7 @@ const calibrationImageURL = (index: number) =>
           color="error"
           :disabled="!currentCalibrationCoeffs"
           style="flex: 1"
-          :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'outlined'"
+          :variant="getButtonVariant(theme)"
           @click="() => (confirmRemoveDialog = { show: true, vf: props.videoFormat })"
         >
           <v-icon start size="large">mdi-delete</v-icon>
@@ -165,7 +166,7 @@ const calibrationImageURL = (index: number) =>
         density="compact"
         text="The selected video format has not been calibrated."
         icon="mdi-alert-circle-outline"
-        :variant="theme.global.name.value === 'LightTheme' ? 'elevated' : 'tonal'"
+        :variant="getAlertVariant(theme)"
       />
     </v-card-text>
     <v-card-text class="pt-0">
